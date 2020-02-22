@@ -12,3 +12,24 @@ services:
         restart: always
         ports:
             - "12321:12321/udp"
+    
+    prometheus:
+        image: prom/prometheus
+        restart: always
+        ports:
+            - "9090:9090"
+        volumes:
+            - /home/pi/prometheus.yml:/etc/prometheus/prometheus.yml
+            # fails! the file does not exist in the docker so a directory is created and then a file to directory mapping fails
+            # need to consider how to have an existing file within the docker, 
+            # rebuilding prometheus just for a touch command seems stupid but will work, any other way?
+            # - /home/pi/mdns-sd.json:/etc/prometheus/mdns-sd.json
+            
+    grafana:
+        image: grafana/grafana
+        restart: always
+        ports: 
+            - "3000:3000"
+        volumes:
+            - /home/pi/grafana:/var/lib/grafana
+            # need to understand what other volumes are needed for saving grafana things, path home /usr/share/grafana? path logs /var/log/grafana?
