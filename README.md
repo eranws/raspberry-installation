@@ -70,12 +70,8 @@ Installation instructions for how to setup a new Raspberry Pi ready to run KivSE
 ## [Install docker and docker-compose](https://dev.to/rohansawant/installing-docker-and-docker-compose-on-the-raspberry-pi-in-5-simple-steps-3mgl)
 
    1. 'curl -sSL <https://get.docker.com> | sh'
-   2. 'sudo usermod -aG docker pi' (optional step to not have to sudo every docker command)
-   3. Install dependencies: \
-      'sudo apt-get install -y libffi-dev libssl-dev' \
-      'sudo apt-get install -y python3 python3-pip' (comes preinstalled in Raspberry Pi OS) \
-      'sudo apt-get remove python-configparser' \
-   4. 'sudo pip3 -v install docker-compose'
+   2. 'sudo usermod -aG docker pi' (optional but recommended step to not have to sudo every docker command), needs a reboot to kick in
+   3. 'sudo pip3 -v install docker-compose'
 
 ## Run docker-compose using the docker-compose.yml in this repository
 
