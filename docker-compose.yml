@@ -10,6 +10,15 @@ services:
         restart: always
         ports:
             - "12321:12321/udp"
+    wavplayeralsa:
+        image: blumamir/wavplayeralsa
+        restart: always
+        ports:
+            - "8080:80"
+        volumes:
+          - /home/pi/Music:/wav_files
+        devices:
+          - /dev/snd
     influxdb:
         image: influxdb
         restart: unless-stopped
@@ -17,9 +26,10 @@ services:
           - "8086:8086"
         volumes:
           - /home/pi/influxdb:/var/lib/influxdb
-          - /home/pi/influxdb/influxdb.conf:/etc/influxdb/influxdb.conf:ro
+          #- /home/pi/influxdb/influxdb.conf:/etc/influxdb/influxdb.conf:ro
     grafana:
         image: grafana/grafana
+        user: "$UID:$GID"
         restart: unless-stopped
         links:
           - influxdb
