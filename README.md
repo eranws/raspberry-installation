@@ -82,8 +82,9 @@ Installation instructions for how to setup a new Raspberry Pi ready to run KivSE
 
    1. mosquitto mqtt message broker
    2. time sync server
-   3. wavplayeralsa
-   4. influxdb (required only for monitoring, can be excluded from docker-compose)
-   5. grafana (required only for monitoring, can be excluded from docker-compose)
+   3. led object service
+   4. wavplayeralsa
+   5. influxdb (required only for monitoring, excluded from docker-compose)
+   6. grafana (required only for monitoring, excluded from docker-compose)
 
 ## [Set raspberry to automatically run things using crontab](https://www.dexterindustries.com/howto/auto-run-python-programs-on-the-raspberry-pi/)
