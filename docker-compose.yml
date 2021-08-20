@@ -10,6 +10,18 @@ services:
         restart: always
         ports:
             - "12321:12321/udp"
+    ledobjectservice:
+        image: blumamir/led-object-service
+        restart: always
+        environment:
+            BROKER_URL: mosquitto
+            SERVER_PORT: 80
+            STORAGE_TYPE: git
+            GIT_STORAGE_REPO: /led_object_repo
+        ports:
+            - "8081:80"
+        volumes:
+            - /home/pi/repos/led_object_repo:/led_object_repo
     wavplayeralsa:
         image: blumamir/wavplayeralsa
         restart: always
@@ -19,24 +31,24 @@ services:
           - /home/pi/Music:/wav_files
         devices:
           - /dev/snd
-    influxdb:
-        image: influxdb
-        restart: unless-stopped
-        ports:
-          - "8086:8086"
-        volumes:
-          - /home/pi/influxdb:/var/lib/influxdb
-          #- /home/pi/influxdb/influxdb.conf:/etc/influxdb/influxdb.conf:ro
-    grafana:
-        image: grafana/grafana
-        user: "$UID:$GID"
-        restart: unless-stopped
-        links:
-          - influxdb
-        ports:
-          - "3000:3000"
-        volumes:
-          - /home/pi/grafana:/var/lib/grafana
+    # influxdb:
+        # image: influxdb
+        # restart: unless-stopped
+        # ports:
+          # - "8086:8086"
+        # volumes:
+          # - /home/pi/influxdb:/var/lib/influxdb
+          # #- /home/pi/influxdb/influxdb.conf:/etc/influxdb/influxdb.conf:ro
+    # grafana:
+        # image: grafana/grafana
+        # user: "$UID:$GID"
+        # restart: unless-stopped
+        # links:
+          # - influxdb
+        # ports:
+          # - "3000:3000"
+        # volumes:
+          # - /home/pi/grafana:/var/lib/grafana
 
 #volumes:
 #  influxdb: 
