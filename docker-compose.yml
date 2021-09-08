@@ -1,7 +1,7 @@
 version: "2"
 services:
     mosquitto:
-        image: eclipse-mosquitto
+        image: eclipse-mosquitto:1.6.15
         restart: always
         ports:
             - "1883:1883"
@@ -14,7 +14,7 @@ services:
         image: blumamir/led-object-service
         restart: always
         environment:
-            BROKER_URL: mosquitto
+            BROKER_URL: mqtt://mosquitto
             SERVER_PORT: 80
             STORAGE_TYPE: git
             GIT_STORAGE_REPO: /led_object_repo
