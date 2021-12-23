@@ -33,6 +33,19 @@ services:
             - "8082:80"
         volumes:
             - /home/pi/repos/led_sequence_repo:/led_sequence_repo
+    ledtriggerservice:
+        image: blumamir/led-trigger-service
+        restart: always
+        environment:
+            APP_ENV: production
+            PORT: 80
+            BROKER_URL: mqtt://mosquitto
+            LED_SEQ_SERVICE_IP: ledsequenceservice
+            LED_SEQ_SERVICE_PORT: 8082
+            PLAYER_IP: wavplayeralsa
+            PLAYER_PORT: 8080
+        ports:
+            - "8083:80"
     wavplayeralsa:
       image: blumamir/wavplayeralsa
       restart: always
