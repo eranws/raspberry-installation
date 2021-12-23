@@ -1,61 +1,76 @@
 version: "2"
 services:
-    mosquitto:
-        image: eclipse-mosquitto:1.6.15
-        restart: always
-        ports:
-            - "1883:1883"
-    timesyncserver:
-        image: blumamir/time-sync-server
-        restart: always
-        ports:
-            - "12321:12321/udp"
-    ledobjectservice:
-        image: blumamir/led-object-service
-        restart: always
-        environment:
-            BROKER_URL: mqtt://mosquitto
-            SERVER_PORT: 80
-            STORAGE_TYPE: git
-            GIT_STORAGE_REPO: /led_object_repo
-        ports:
-            - "8081:80"
-        volumes:
-            - /home/pi/repos/led_object_repo:/led_object_repo
-    ledsequenceservice:
-        image: blumamir/led-sequence-service
-        restart: always
-        environment:
-            SERVER_PORT: 80
-            STORAGE_TYPE: git
-            GIT_STORAGE_REPO: /led_sequence_repo
-        ports:
-            - "8082:80"
-        volumes:
-            - /home/pi/repos/led_sequence_repo:/led_sequence_repo
-    ledtriggerservice:
-        image: blumamir/led-trigger-service
-        restart: always
-        environment:
-            APP_ENV: production
-            PORT: 80
-            BROKER_URL: mqtt://mosquitto
-            LED_SEQ_SERVICE_IP: ledsequenceservice
-            LED_SEQ_SERVICE_PORT: 8082
-            PLAYER_IP: wavplayeralsa
-            PLAYER_PORT: 8080
-        ports:
-            - "8083:80"
-    wavplayeralsa:
-      image: blumamir/wavplayeralsa
-      restart: always
-      ports:
-          - "8080:80"
-          - "9002:9002"
-      volumes:
-        - /home/pi/Music:/wav_files
-      devices:
-        - /dev/snd
+
+  mosquitto:
+    image: eclipse-mosquitto:1.6.15
+    restart: always
+    ports:
+      - "1883:1883"
+
+  wavplayeralsa:
+    image: blumamir/wavplayeralsa
+    restart: always
+    ports:
+      - "8080:80"
+      - "9002:9002"
+    volumes:
+      - /home/pi/Music:/wav_files
+    devices:
+      - /dev/snd
+    depends_on: 
+      - "mosquitto"
+                    
+  timesyncserver:
+    image: blumamir/time-sync-server
+    restart: always
+    ports:
+      - "12321:12321/udp"
+
+  ledsequenceservice:
+    image: blumamir/led-sequence-service
+    restart: always
+    environment:
+      SERVER_PORT: 80
+      STORAGE_TYPE: git
+      GIT_STORAGE_REPO: /led_sequence_repo
+    ports:
+      - "8082:80"
+    volumes:
+      - /home/pi/repos/led_sequence_repo:/led_sequence_repo
+
+  ledobjectservice:
+    image: blumamir/led-object-service
+    restart: always
+    environment:
+      BROKER_URL: mqtt://mosquitto
+      SERVER_PORT: 80
+      STORAGE_TYPE: git
+      GIT_STORAGE_REPO: /led_object_repo
+    ports:
+      - "8081:80"
+    volumes:
+      - /home/pi/repos/led_object_repo:/led_object_repo
+    depends_on: 
+      - "mosquitto"
+          
+  ledtriggerservice:
+    image: blumamir/led-trigger-service
+    restart: always
+    environment:
+      APP_ENV: production
+      PORT: 80
+      BROKER_URL: mqtt://mosquitto
+      LED_SEQ_SERVICE_IP: ledsequenceservice
+      LED_SEQ_SERVICE_PORT: 80
+      PLAYER_IP: wavplayeralsa
+      PLAYER_PORT: 80
+    ports:
+      - "8083:80"
+    depends_on: 
+      - "ledsequenceservice"
+      - "wavplayeralsa"
+      - "mosquitto"
+
     # influxdb:
         # image: influxdb
         # restart: unless-stopped
