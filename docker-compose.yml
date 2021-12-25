@@ -3,6 +3,7 @@ services:
 
   jaeger:
     image: darkowlzz/jaeger-all-in-one:1.23
+    restart: always
     ports:
       - "16686:16686"
       - "6831"
