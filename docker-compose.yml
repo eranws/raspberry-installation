@@ -1,6 +1,13 @@
 version: "2"
 services:
 
+  jaeger:
+    image: darkowlzz/jaeger-all-in-one:1.23
+    ports:
+      - "16686:16686"
+      - "6831"
+      - "6832"
+
   mosquitto:
     image: eclipse-mosquitto:1.6.15
     restart: always
@@ -46,6 +53,7 @@ services:
       SERVER_PORT: 80
       STORAGE_TYPE: git
       GIT_STORAGE_REPO: /led_object_repo
+      OTEL_EXPORTER_JAEGER_AGENT_HOST: jaeger
     ports:
       - "8081:80"
     volumes:
