@@ -88,3 +88,9 @@ Installation instructions for how to setup a new Raspberry Pi ready to run KivSE
    6. grafana (required only for monitoring, excluded from docker-compose)
 
 ## [Set raspberry to automatically run things using crontab](https://www.dexterindustries.com/howto/auto-run-python-programs-on-the-raspberry-pi/)
+
+## Reduce TCP Timeout
+Change `10.0.0.x` to the network you are using, and run:
+```
+echo "ip route change 10.0.0.0/24 via 10.0.0.1 dev eth0 proto dhcp src 10.0.0.200 metric 202 rto_min 20ms" > /lib/dhcpcd/dhcpcd-hooks/40-route
+```

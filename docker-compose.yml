@@ -85,14 +85,15 @@ services:
       - "wavplayeralsa"
       - "mosquitto"
 
-    # influxdb:
-        # image: influxdb
-        # restart: unless-stopped
-        # ports:
-          # - "8086:8086"
-        # volumes:
-          # - /home/pi/influxdb:/var/lib/influxdb
-          # #- /home/pi/influxdb/influxdb.conf:/etc/influxdb/influxdb.conf:ro
+  influxdb:
+      image: influxdb
+      restart: unless-stopped
+      ports:
+        - "8086:8086"
+      volumes:
+        - /home/pi/influxdb:/var/lib/influxdb
+        #- /home/pi/influxdb/influxdb.conf:/etc/influxdb/influxdb.conf:ro
+
     # grafana:
         # image: grafana/grafana
         # user: "$UID:$GID"
