@@ -1,0 +1,5 @@
+
+# influxdb folders
+influxdb/meta
+influxdb/data
+influxdb/wal
