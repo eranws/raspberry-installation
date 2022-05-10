@@ -79,7 +79,7 @@
   "panels": [
     {
       "cacheTimeout": null,
-      "datasource": "${DS_INFLUXDB}",
+      "datasource": "influxdb_uid",
       "description": "",
       "gridPos": {
         "h": 2,
@@ -206,7 +206,7 @@
       "type": "stat"
     },
     {
-      "datasource": "${DS_INFLUXDB}",
+      "datasource": "influxdb_uid",
       "gridPos": {
         "h": 7,
         "w": 5,
@@ -292,7 +292,7 @@
     },
     {
       "columns": [],
-      "datasource": "${DS_INFLUXDB}",
+      "datasource": "influxdb_uid",
       "fontSize": "100%",
       "gridPos": {
         "h": 9,
@@ -424,7 +424,7 @@
     },
     {
       "columns": [],
-      "datasource": "${DS_INFLUXDB}",
+      "datasource": "influxdb_uid",
       "fontSize": "100%",
       "gridPos": {
         "h": 8,
@@ -566,7 +566,7 @@
       "type": "table"
     },
     {
-      "datasource": "${DS_INFLUXDB}",
+      "datasource": "influxdb_uid",
       "folderId": 0,
       "gridPos": {
         "h": 8,
@@ -626,7 +626,7 @@
       "type": "dashlist"
     },
     {
-      "datasource": "${DS_INFLUXDB}",
+      "datasource": "influxdb_uid",
       "gridPos": {
         "h": 7,
         "w": 5,
@@ -712,7 +712,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "${DS_INFLUXDB}",
+      "datasource": "influxdb_uid",
       "gridPos": {
         "h": 7,
         "w": 5,

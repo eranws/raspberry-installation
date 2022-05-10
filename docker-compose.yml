@@ -94,16 +94,23 @@ services:
       - ./influxdb:/var/lib/influxdb
       - ./influxdb/influxdb.conf:/etc/influxdb/influxdb.conf:ro
 
-    # grafana:
-        # image: grafana/grafana
-        # user: "$UID:$GID"
-        # restart: unless-stopped
-        # links:
-          # - influxdb
-        # ports:
-          # - "3000:3000"
-        # volumes:
-          # - /home/pi/grafana:/var/lib/grafana
+  grafana:
+    image: grafana/grafana
+    user: "$UID:$GID"
+    restart: unless-stopped
+    links:
+      - influxdb
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana:/var/lib/grafana
+      - ./grafana/datasources:/etc/grafana/provisioning/datasources/
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards/
+    depends_on:
+      - influxdb
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=kivsee12
 
 #volumes:
 #  influxdb: 

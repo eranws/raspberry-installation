@@ -58,7 +58,7 @@
   "links": [],
   "panels": [
     {
-      "datasource": "${DS_INFLUXDB}",
+      "datasource": "influxdb_uid",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -72,7 +72,7 @@
       "type": "row"
     },
     {
-      "datasource": "${DS_INFLUXDB}",
+      "datasource": "influxdb_uid",
       "gridPos": {
         "h": 9,
         "w": 5,
@@ -163,7 +163,7 @@
       "type": "gauge"
     },
     {
-      "datasource": "${DS_INFLUXDB}",
+      "datasource": "influxdb_uid",
       "gridPos": {
         "h": 9,
         "w": 5,
@@ -255,7 +255,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "${DS_INFLUXDB}",
+      "datasource": "influxdb_uid",
       "gridPos": {
         "h": 9,
         "w": 5,
@@ -371,7 +371,7 @@
       {
         "allValue": null,
         "current": {},
-        "datasource": "${DS_INFLUXDB}",
+        "datasource": "influxdb_uid",
         "definition": "SHOW TAG VALUES  WITH KEY = \"device\" ",
         "hide": 0,
         "includeAll": true,

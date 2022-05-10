@@ -3,3 +3,11 @@
 influxdb/meta
 influxdb/data
 influxdb/wal
+
+# grafana
+grafana/alerting
+grafana/csv
+grafana/plugins
+grafana/png
+grafana/storage
+grafana/grafana.db
