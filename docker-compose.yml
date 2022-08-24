@@ -19,7 +19,20 @@ services:
       - /dev/snd
     depends_on: 
       - "mosquitto"
-                    
+    
+    entrypoint:
+      - ./wavplayeralsa
+      - -d
+      - /wav_files
+      - --http_listen_port
+      - "80"
+      - --ws_listen_port
+      - "9002"
+      - --mqtt_host
+      - "10.0.0.200"
+      - --mqtt_port
+      - "1883"
+
   timesyncserver:
     image: blumamir/time-sync-server
     restart: always
