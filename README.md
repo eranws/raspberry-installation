@@ -103,7 +103,7 @@ ssh 10.0.0.200
    2. `sudo usermod -aG docker pi` (optional but recommended step to not have to sudo every docker command), needs a reboot to kick in
    3. `sudo pip3 -v install docker-compose`
 
-## Run docker-compose using the docker-compose.yml in this repository
+## Run `docker-compose` using the `docker-compose.yml` in this repository
 
    1. copy `docker-compose.yml` to raspberry pi:
    ```
