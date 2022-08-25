@@ -7,7 +7,7 @@ Installation instructions for how to setup a new Raspberry Pi ready to run KivSE
 * Raspberry Pi
 * SD card 16 GB or more
 * Good quality power supply for the Raspberry Pi, at least 2.5A is recommended
-* PiFi DAC+ v2.0 sound card (optional, for better audio)
+* [PiFi DAC+ v2.0 sound card](readme-pifi.md) (optional, for better audio)
 * DS1307 RTC module (optional, for keeping time with no internet connection)
 
 ## Flash SD card with Raspberry Pi OS
@@ -50,22 +50,6 @@ Installation instructions for how to setup a new Raspberry Pi ready to run KivSE
          broadcast 224.0.1.1
    5. Restart ntp \
       'sudo /etc/init.d/ntp restart'
-
-## [Install PiFi DAC+ v2.0 sound card](https://github.com/guussie/PiDS/wiki/09.-How-to-make-various-DACs-work)
-
-   1. Follow steps for PiFi DAC+ v2.0
-   2. Most important step (can work without other steps) is to edit /boot/config.txt \
-      'sudo nano /boot/config.txt' \
-      Uncomment or add these two lines: \
-      dtparam=i2c_arm=on \
-      dtparam=i2s=on \
-      and add this line: \
-      dtoverlay=hifiberry-dacplus
-   3. Only thing not included in guide is to comment out this line in /boot/config.txt \
-      dtparam=audio=on \
-      to disable loading of internal raspberry sound device.
-
-## [Install RTC module](https://thepihut.com/blogs/raspberry-pi-tutorials/17209332-adding-a-real-time-clock-to-your-raspberry-pi)
 
 ## [Install docker and docker-compose](https://dev.to/rohansawant/installing-docker-and-docker-compose-on-the-raspberry-pi-in-5-simple-steps-3mgl)
 
