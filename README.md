@@ -22,11 +22,51 @@ DS1307 RTC module (optional,
 
 ## Network settings
 
-set eth0 ip to 10.0.0.200 and router and DNS server to 10.0.0.1:
+> Set eth0 ip to `10.0.0.200`, router and DNS server to `10.0.0.1`
 
-   - [Set network settings without GUI](https://www.ionos.com/digitalguide/server/configuration/provide-raspberry-pi-with-a-static-ip-address/)
+### [Use GUI with VNC Connection](README-vnc.md)
 
-   - [Use GUI with VNC Connection](README-vnc.md)
+### [Set network settings without GUI:](https://www.ionos.com/digitalguide/server/configuration/provide-raspberry-pi-with-a-static-ip-address/)
+
+<!-- ## Assign a static private IP address to Raspberry Pi  -->
+
+<!-- #### with DHCPCD  -->
+
+1. Before you begin, check whether DHCPCD is already activated using:
+```
+sudo service dhcpcd status
+```
+
+2. In case it’s not, activate DHCPCD as follows:
+```
+sudo service dhcpcd start
+sudo systemctl enable dhcpcd
+```
+
+<!-- 3. Now make sure that the configuration of the file `/etc/network/interfaces` has the original status. For this, the ‘iface’ configuration needs to be set at ‘manual’ for the interfaces. -->
+
+3. For the editing of the activated DHCPCDs, start by opening the configuration file `/etc/dhcpcd.conf` and running the following command:
+
+```
+sudo nano /etc/dhcpcd.conf
+```
+
+If your Raspberry Pi is connected to the internet via an Ethernet or network cable, then enter the command `interface eth0`; if it takes place over Wi-Fi, then use the `interface wlan` command. This should be at the `/etc/dhcpcd.conf` file:
+
+```
+interface eth0
+static ip_address=10.0.0.200/24
+static routers=10.0.0.1
+static domain_name_servers=10.0.0.1
+```
+
+`sudo reboot`
+
+   
+6. Turn off wifi interface:
+   `sudo ifconfig wlan0 down`
+
+7. connect through wifi again using `ssh 10.0.0.200`
 
 ## [Configure NTP server](http://raspberrypi.tomasgreno.cz/ntp-client-and-server.html)
 
