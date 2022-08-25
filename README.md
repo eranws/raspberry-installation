@@ -20,20 +20,13 @@ DS1307 RTC module (optional,
    4. Insert SD card to Raspberry Pi, connect by Ethernet cable to router and to power using power supply
    5. SSH to the Raspberry at address 'raspberrypi', default username: 'pi', default password: 'raspberry'
 
-## VNC connection and Network setting
+## Network settings
 
-   1. To enable vnc server on the raspberry, enter raspberry configuration through SSH, command 'sudo raspi-config', under Interfacing Options/VNC, Enable.
-   2. Connect to the raspberry using VNC client and go through basic setup, change password etc.
-   3. If VNC screen is small open a terminal (or ssh) and 'sudo nano /boot/config.txt' \
-      Uncomment the following lines and change values as needed \
-      hdmi_force_hotplug=1 \
-      hdmi_group=1 \
-      hdmi_mode=16 \
-      hdmi_drive=2 \
-      save file and close, reboot.
-   4. Go to Network Settings by right clicking on the network interface symbol, the two arrows at the top right. \
-      Turn off wifi interface and set eth0 ip to 10.0.0.200, router and DNS server to 10.0.0.1
-   5. [To set network settings without GUI](https://www.ionos.com/digitalguide/server/configuration/provide-raspberry-pi-with-a-static-ip-address/)
+set eth0 ip to 10.0.0.200 and router and DNS server to 10.0.0.1:
+
+   - [Set network settings without GUI](https://www.ionos.com/digitalguide/server/configuration/provide-raspberry-pi-with-a-static-ip-address/)
+
+   - [Use GUI with VNC Connection](README-vnc.md)
 
 ## [Configure NTP server](http://raspberrypi.tomasgreno.cz/ntp-client-and-server.html)
 
