@@ -9,7 +9,7 @@ Installation instructions for how to setup a new Raspberry Pi ready to run KivSE
 * Good quality power supply for the Raspberry Pi, at least 2.5A is recommended
 
 ### optional
-* for better audio: [PiFi DAC+ v2.0 sound card](readme-pifi.md) 
+* for better audio: [PiFi DAC+ v2.0 sound card](docs/README-pifi.md) 
 * for keeping time with no internet connection)
 DS1307 RTC module
 ## Flash SD card with Raspberry Pi OS
@@ -28,7 +28,7 @@ DS1307 RTC module
 
 > Set eth0 ip to `10.0.0.200`, router and DNS server to `10.0.0.1`
 
-### [Use GUI with VNC Connection](README-vnc.md)
+### [Use GUI with VNC Connection](docs/README-vnc.md)
 
 ### [Set network settings without GUI:](https://www.ionos.com/digitalguide/server/configuration/provide-raspberry-pi-with-a-static-ip-address/)
 
