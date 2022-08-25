@@ -5,11 +5,13 @@ Installation instructions for how to setup a new Raspberry Pi ready to run KivSE
 ## Hardware
 
 * Raspberry Pi
-* SD card 16 GB or more
+* SD card 4 GB (server) or more (desktop, gui)
 * Good quality power supply for the Raspberry Pi, at least 2.5A is recommended
-* [PiFi DAC+ v2.0 sound card](readme-pifi.md) (optional, for better audio)
-* DS1307 RTC module (optional, for keeping time with no internet connection)
 
+### optional
+* for better audio: [PiFi DAC+ v2.0 sound card](readme-pifi.md) 
+* for keeping time with no internet connection)
+DS1307 RTC module (optional, 
 ## Flash SD card with Raspberry Pi OS
 
    1. [Download Raspberry Pi Imager](https://www.raspberrypi.org/downloads/)
