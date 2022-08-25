@@ -99,21 +99,22 @@ ssh 10.0.0.200
 
 ## [Install docker and docker-compose](https://dev.to/rohansawant/installing-docker-and-docker-compose-on-the-raspberry-pi-in-5-simple-steps-3mgl)
 
-   1. `curl -sSL <https://get.docker.com> | sh`
+   1. `curl -sSL https://get.docker.com | sh`
    2. `sudo usermod -aG docker pi` (optional but recommended step to not have to sudo every docker command), needs a reboot to kick in
    3. `sudo pip3 -v install docker-compose`
 
 ## Run docker-compose using the docker-compose.yml in this repository
 
-   1. copy docker-compose.yml to raspberry pi
+   1. copy `docker-compose.yml` to raspberry pi:
+   ```
+   curl -O https://raw.githubusercontent.com/eranws/raspberry-installation/master/docker-compose.yml
+   ```
+
    2. `sudo docker-compose up -d`
 
    This sets up:
-   1. mosquitto mqtt message broker
-   2. time sync server
-   3. wavplayeralsa
-   4. influxdb (required only for monitoring, can be excluded from docker-compose)
-   5. grafana (required only for monitoring, can be excluded from docker-compose)
-
+   1. `mosquitto` mqtt message broker, pub-sub on websockets
+   2. `time-sync-server`
+   3. `wavplayeralsa`
 
 ## [Set raspberry to automatically run things using crontab](https://www.dexterindustries.com/howto/auto-run-python-programs-on-the-raspberry-pi/)
